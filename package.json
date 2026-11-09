@@ -1,0 +1,53 @@
+{
+  "name": "dsh-plugin-lgd-trust",
+  "version": "0.1.0",
+  "description": "Read-only trust panel for DeepSeek Harness: shows evaluated agent-skill coverage, evidence grades (E0-E4) and NV counts from a local snapshot. No network, no writes.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Xinghua Zhao (https://orcid.org/0009-0001-0512-1237)",
+  "homepage": "https://github.com/LGD-Eval/dsh-plugin-lgd-trust",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LGD-Eval/dsh-plugin-lgd-trust.git"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "evaluation",
+    "trust",
+    "ai-agents",
+    "evidence"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test tests/summarize.test.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}
