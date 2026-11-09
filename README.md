@@ -23,7 +23,7 @@ The two scales are orthogonal: a high grade with no evidence should still be rea
 
 ## Install
 
-Requirements: a DeepSeek Harness version that supports plugin bundles (exact minimum **NV** — tested against the 2.0.x desktop build). Node is bundled with DSH.
+Requirements: a DeepSeek Harness version that supports plugin bundles. Minimum version: not verified (NV) — tested on the 2.0.x desktop build. Node is bundled with DSH.
 
 ```bash
 # 1) local checkout (works today)
@@ -49,14 +49,14 @@ dsh plugin remove dsh-plugin-lgd-trust
 # or remove the dependency + bundle entry from the profile package.json, then restart
 ```
 
-npm/git+tag install: **NV** (not published yet). This README will be updated when it is.
+npm/git+tag install: not published yet (status: not published). This README will be updated when it is.
 
 ## Data source
 
 The plugin reads one JSON file (array of `{slug, score, grade, state, critical?}`).
 Resolution order:
 
-1. `LGD_TRUST_SNAPSHOT` — explicit local override; **the file you point at is read as-is**;
+1. `LGD_TRUST_SNAPSHOT` — explicit local override; **must be an absolute path** (relative paths are rejected with `SNAPSHOT_BAD_PATH`); the file you point at is read as-is;
 2. `~/.dsh/lgd-trust/skills187-eval.json`;
 3. `D:/deepseek-harness/default-workspace/work/eval-run/skills187-eval.json` (workspace default).
 
