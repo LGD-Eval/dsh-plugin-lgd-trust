@@ -24,7 +24,7 @@ test('summarize returns coverage, grades, and lowest entries', () => {
   assert.equal(s.coverage.nv, 1);
   assert.deepEqual(s.grades, { 'A+': 1, A: 1 });
   assert.equal(s.lowest[0].slug, 'b');
-  assert.match(s.policy, /NV is never a pass/);
+  assert.match(s.policy, /never a pass/);
 });
 
 test('invalid snapshot throws (host turns this into HTTP 503)', () => {
