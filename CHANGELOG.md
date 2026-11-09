@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 — 2026-11-09
+
+- LGD_TRUST_SNAPSHOT must be an absolute path; relative paths are rejected with
+  SNAPSHOT_BAD_PATH (external AI review finding).
+- README: removed NV ambiguity (NV = Not Verified only; npm status written as “not published”).
+
 ## 0.2.0 — 2026-11-09
 
 Response to an independent zero-context review (8 findings, 3 P0):
