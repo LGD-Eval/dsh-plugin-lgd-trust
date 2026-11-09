@@ -27,7 +27,15 @@ export const WHITELIST = [
 ];
 
 export function resolvedPath(override = process.env.LGD_TRUST_SNAPSHOT) {
-  if (override) return path.resolve(override.replace(/^~/, HOME));
+  if (override) {
+    const expanded = override.replace(/^~/, HOME);
+    if (!path.isAbsolute(expanded)) {
+      const err = new Error('LGD_TRUST_SNAPSHOT must be an absolute path');
+      err.code = 'SNAPSHOT_BAD_PATH';
+      throw err;
+    }
+    return path.resolve(expanded);
+  }
   return WHITELIST.find((p) => fs.existsSync(p)) || WHITELIST[0];
 }
 
