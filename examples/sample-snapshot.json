@@ -1,0 +1,6 @@
+[
+  {"slug": "skillgate", "score": 100, "grade": "A+", "state": "evaluated", "critical": 0},
+  {"slug": "unified-credential-vault", "score": 89, "grade": "A", "state": "evaluated", "critical": 0},
+  {"slug": "ai-governance", "score": 82, "grade": "A", "state": "evaluated", "critical": 0},
+  {"slug": "example-missing", "state": "NV"}
+]
