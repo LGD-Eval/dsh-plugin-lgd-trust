@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-lgd-trust",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Read-only trust panel for DeepSeek Harness: shows evaluated agent-skill coverage, evidence grades (E0-E4) and NV counts from a local snapshot. No network, no writes.",
   "type": "module",
   "license": "MIT",
