@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { summarize } from '../index.js';
+import { summarize, resolvedPath } from '../index.js';
 
 function tmpSnapshot(rows) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lgd-trust-test-'));
@@ -34,4 +34,15 @@ test('invalid snapshot throws (host turns this into HTTP 503)', () => {
 
 test('missing file throws', () => {
   assert.throws(() => summarize(path.join(os.tmpdir(), 'does-not-exist-xyz.json')));
+});
+
+test('relative LGD_TRUST_SNAPSHOT is rejected', () => {
+  const prev = process.env.LGD_TRUST_SNAPSHOT;
+  process.env.LGD_TRUST_SNAPSHOT = '../etc/passwd';
+  try {
+    assert.throws(() => resolvedPath(), (e) => e.code === 'SNAPSHOT_BAD_PATH');
+  } finally {
+    if (prev === undefined) delete process.env.LGD_TRUST_SNAPSHOT;
+    else process.env.LGD_TRUST_SNAPSHOT = prev;
+  }
 });
